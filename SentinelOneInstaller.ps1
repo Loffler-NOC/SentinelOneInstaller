@@ -39,15 +39,15 @@ else {
     return 5
 }
 
-if ($env:DisableS1AutoDeploy -eq 1) {
+if ($env:SentinelOneDeployEnabled -eq 0) {
     Write-Output "$programName deployment is disabled at the site level, exiting script."
     return 6
 } 
-elseif ($env:DisableS1AutoDeploy -eq 0) {
+elseif ($env:SentinelOneDeployEnabled -eq 1) {
     Write-Output "$programName deployment is enabled at the device level, proceeding to next check."
 }
 else {
-    Write-Output "Site variable DisableS1AutoDeploy has an unexpected value of $env:DisableS1AutoDeploy , valid values are 0 or 1, exiting script with error"
+    Write-Output "Site variable SentinelOneDeployEnabled has an unexpected value of $env:SentinelOneDeployEnabled , valid values are 0 or 1, exiting script with error"
     return 7
 }
 
