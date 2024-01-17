@@ -1,18 +1,15 @@
 #Check if S1 is already installed
-
-$programName = "Sentinel Agent"
-
 try {
-    $installed = Get-ItemProperty -Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\*"
+    $installed = Get-ItemProperty -Path "HKLM\SYSTEM\CurrentControlSet\Services\SentinelAgent\config\"
 }
 catch {
-    Write-Output "Unable to read HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\* . Cannot determine if S1 is already installed. Full error message:"
+    Write-Output "Unable to read HKLM\SYSTEM\CurrentControlSet\Services\SentinelAgent\config\ . Cannot determine if S1 is already installed. Full error message:"
     Write-Output $_
     exit 1
 }
 
 if ($installed) {
-    Write-Output "SentinelOne is already installed."
+    Write-Output "SentinelOne is already installed"
     exit 1
 } 
 else {
@@ -40,11 +37,11 @@ else {
 }
 
 if ($env:SentinelOneDeployEnabled -eq 0) {
-    Write-Output "$programName deployment is disabled at the site level, exiting script."
+    Write-Output "$programName deployment is disabled at the site level, exiting script"
     exit 1
 } 
 elseif ($env:SentinelOneDeployEnabled -eq 1) {
-    Write-Output "$programName deployment is enabled at the device level, proceeding to next check."
+    Write-Output "$programName deployment is enabled at the device level, proceeding to next check"
 }
 else {
     Write-Output "Site variable SentinelOneDeployEnabled has an unexpected value of $env:SentinelOneDeployEnabled , valid values are 0 or 1, exiting script with error"
@@ -64,7 +61,7 @@ elseif ($env:S1SiteToken -eq 0) {
     exit 1
 }
 else {
-    Write-Output "S1 site token is $env:S1SiteToken, proceeding to next step."
+    Write-Output "S1 site token is $env:S1SiteToken, proceeding to next step"
 }
 
 #Download the S1 installer
@@ -109,7 +106,7 @@ catch {
 
 if ($S1installed) {
     Write-Output "SentinelOne is installed."
-    Write-Output "NOTE: Endpoint restart is required for full SentinelOne visibility and control."
+    Write-Output "NOTE: Endpoint restart is required for full SentinelOne visibility and control"
     exit 0
 } 
 else {
