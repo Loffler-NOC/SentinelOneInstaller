@@ -22,6 +22,7 @@ else {
 
 if (!$env:SentinelOneSiteToken) {
     Write-Output "S1 site token not found, please check site variables for S1SiteToken and make sure it exists and is filled out"
+    Write-Output "S1 site token reporting as $env:SentinelOneSiteToken"
     exit 1
 }
 elseif ($env:SentinelOneSiteToken -eq 0) {
