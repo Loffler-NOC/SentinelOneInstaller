@@ -20,16 +20,16 @@ else {
 #S1SiteToken is the global and site variable for the SentinelOne site token.
 #This tells S1 what site to tie the agent to in the S1 portal after install
 
-if (!$env:S1SiteToken) {
+if (!$env:SentinelOneSiteToken) {
     Write-Output "S1 site token not found, please check site variables for S1SiteToken and make sure it exists and is filled out"
     exit 1
 }
-elseif ($env:S1SiteToken -eq 0) {
+elseif ($env:SentinelOneSiteToken -eq 0) {
     Write-Output "S1 site token still has the default value of 0, please check site variables for S1SiteToken and make sure it exists and is filled out"
     exit 1
 }
 else {
-    Write-Output "S1 site token is $env:S1SiteToken, proceeding to next step"
+    Write-Output "S1 site token is $env:SentinelOneSiteToken, proceeding to next step"
 }
 
 #Download the S1 installer
