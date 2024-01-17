@@ -1,6 +1,6 @@
 #Check if S1 is already installed
 try {
-    $installed = Get-ItemProperty -Path "HKLM\SYSTEM\CurrentControlSet\Services\SentinelAgent\config\"
+    $installed = Get-ItemProperty -LiteralPath "HKLM\SYSTEM\CurrentControlSet\Services\SentinelAgent\config\"
 }
 catch {
     Write-Output "Unable to read HKLM\SYSTEM\CurrentControlSet\Services\SentinelAgent\config\ . Cannot determine if S1 is already installed. Full error message:"
@@ -64,7 +64,7 @@ catch {
 
 #Check that S1 was installed
 try {
-    $S1installed = Get-ItemProperty -Path "HKLM\SYSTEM\CurrentControlSet\Services\SentinelAgent\config\"
+    $S1installed = Get-ItemProperty -LiteralPath "HKLM\SYSTEM\CurrentControlSet\Services\SentinelAgent\config\"
 }
 catch {
     Write-Output "Unable to read HKLM\SYSTEM\CurrentControlSet\Services\SentinelAgent\config\ . Cannot determine if S1 was installed successfully. Full error message:"
