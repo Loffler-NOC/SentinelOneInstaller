@@ -16,38 +16,6 @@ else {
     Write-Host "SentinelOne is not installed, proceeding to next check"
 }
 
-#Check that S1 deployment is enabled
-#UDF11 is Disable S1 Autodeploy
-#DisableS1AutoDeploy is the global and site variable for disable S1 Autodeploy
-
-if ($env:UDF_11 -eq 1) {
-    Write-Output "SentinelOne deployment is disabled at the device level, exiting script."
-    exit 1
-} 
-elseif ($env:UDF_11 -eq 0) {
-    Write-Output "SentinelOne deployment is enabled at the device level, proceeding to next check."
-}
-elseif (!$env:UDF_11) {
-    Write-Output "UDF11 DisableS1AutoDeploy is blank, value is reporting as: "$env:UDF_11" , valid values are 0 or 1, exiting script with error"
-    exit 1
-}
-else {
-    Write-Output "UDF11 DisableS1AutoDeploy has an unexpected value of $env:UDF_11 , valid values are 0 or 1, exiting script with error"
-    exit 1
-}
-
-if ($env:SentinelOneDeployEnabled -eq 0) {
-    Write-Output "$programName deployment is disabled at the site level, exiting script"
-    exit 1
-} 
-elseif ($env:SentinelOneDeployEnabled -eq 1) {
-    Write-Output "$programName deployment is enabled at the device level, proceeding to next check"
-}
-else {
-    Write-Output "Site variable SentinelOneDeployEnabled has an unexpected value of $env:SentinelOneDeployEnabled , valid values are 0 or 1, exiting script with error"
-    exit 1
-}
-
 #Check that site token is filled out
 #S1SiteToken is the global and site variable for the SentinelOne site token.
 #This tells S1 what site to tie the agent to in the S1 portal after install
