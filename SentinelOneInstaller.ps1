@@ -54,7 +54,7 @@ catch {
 
 #Clean up the S1 installer
 try {
-    Remove-Item -Path "C:\Temp"
+    Remove-Item -Path "C:\Software\SentinelAgent.exe"
 }
 catch {
     Write-Output "Could not clean up installer. Please check C:\Software\SentinelAgent.exe and see if it was removed. Full error message:"
