@@ -10,7 +10,7 @@ catch {
 
 if ($installed) {
     Write-Output "SentinelOne is already installed"
-    exit 1
+    exit 0
 } 
 else {
     Write-Host "SentinelOne is not installed, proceeding to next check"
