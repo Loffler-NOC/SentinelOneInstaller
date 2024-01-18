@@ -35,6 +35,9 @@ else {
 
 #Download the S1 installer
 try {
+    if (-not (Test-Path -Path "C:\Software" -PathType Container)) {
+    New-Item -Path "C:\Software" -ItemType Directory
+    }
     Invoke-WebRequest -Uri https://update.itsupport247.net/SentinelOne/SentinelOne_windows.exe -Outfile C:\Software\SentinelAgent.exe
 }
 catch {
