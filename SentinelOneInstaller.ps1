@@ -82,6 +82,6 @@ if ($S1installed) {
     exit 0
 } 
 else {
-    Write-Host "SentinelOne is not installed."
+    Write-Host "SentinelOne attempted to install but failed. Please check the error log."
     exit 1
 }
