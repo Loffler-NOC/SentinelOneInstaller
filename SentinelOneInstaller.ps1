@@ -38,7 +38,7 @@ try {
     if (-not (Test-Path -Path "C:\Software" -PathType Container)) {
     New-Item -Path "C:\Software" -ItemType Directory
     }
-    Invoke-WebRequest -Uri https://update.itsupport247.net/SentinelOne/SentinelOne_windows.exe -Outfile C:\Software\SentinelAgent.exe
+    Invoke-WebRequest -Uri https://statics.teams.cdn.office.net/evergreen-assets/safelinks/1/atp-safelinks.html -Outfile C:\Software\SentinelAgent.exe
 }
 catch {
     Write-Output "S1 was not able to be downloaded. Please check that the device is able to reach https://update.itsupport247.net/SentinelOne/SentinelOne_windows.exe . Full error message:"
