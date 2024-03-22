@@ -48,7 +48,7 @@ catch {
 
 #Run the S1 installer
 try {
-    C:\Software\SentinelAgent.exe /silent /SITE_TOKEN=$env:SentinelOneSiteToken
+    Start-Process -FilePath "C:\Software\SentinelAgent.exe" -ArgumentList "-t $env:SentinelOneSiteToken -q" -NoNewWindow
 }
 catch {
     Write-Output "S1 agent was not able to install successfully. Full error message:"
