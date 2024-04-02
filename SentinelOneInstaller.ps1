@@ -33,15 +33,17 @@ else {
     Write-Output "S1 site token is $env:SentinelOneSiteToken, proceeding to next step"
 }
 
+$downloadURI = "https://s3.amazonaws.com/update2.itsupport247.net/SentinelOne/sentinelone_latest/SentinelOneInstaller_windows_x64.exe"
+
 #Download the S1 installer
 try {
     if (-not (Test-Path -Path "C:\Software" -PathType Container)) {
     New-Item -Path "C:\Software" -ItemType Directory
     }
-    Invoke-WebRequest -Uri https://s3.amazonaws.com/update2.itsupport247.net/SentinelOne/sentinelone_latest/SentinelOneInstaller_windows_x64.exe -Outfile C:\Software\SentinelAgent.exe
+    Invoke-WebRequest -Uri $downloadURI -Outfile C:\Software\SentinelAgent.exe
 }
 catch {
-    Write-Output "S1 was not able to be downloaded. Please check that the device is able to reach https://update.itsupport247.net/SentinelOne/SentinelOne_windows.exe . Full error message:"
+    Write-Output "S1 was not able to be downloaded. Please check that the device is able to reach $downloadURI . Full error message:"
     Write-Output $_
     exit 1
 }
