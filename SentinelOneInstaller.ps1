@@ -33,7 +33,7 @@ else {
     Write-Output "S1 site token is $env:SentinelOneSiteToken, proceeding to next step"
 }
 
-$downloadURI = "https://s3.amazonaws.com/update2.itsupport247.net/SentinelOne/sentinelone_latest_mod/SentinelOneInstaller_windows_x64.exe"
+$downloadURI = "https://s3.amazonaws.com/update2.itsupport247.net/SentinelOne/sentinelone_latest/SentinelOneInstaller_windows_x64.exe"
 
 #Download the S1 installer
 try {
