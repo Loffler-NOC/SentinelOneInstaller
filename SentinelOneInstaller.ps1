@@ -34,14 +34,12 @@ else {
 }
 
 $downloadURI = "https://s3.amazonaws.com/update2.itsupport247.net/SentinelOne/sentinelone_latest/SentinelOneInstaller_windows_x64.exe"
+$exePath = ".\SentinelAgent.exe"
 
 #Download the S1 installer
 try {
-    if (-not (Test-Path -Path "C:\Software" -PathType Container)) {
-    New-Item -Path "C:\Software" -ItemType Directory
+    Invoke-WebRequest -Uri $downloadURI -Outfile $exePath
     }
-    Invoke-WebRequest -Uri $downloadURI -Outfile C:\Software\SentinelAgent.exe
-}
 catch {
     Write-Output "S1 was not able to be downloaded. Please check that the device is able to reach $downloadURI . Full error message:"
     Write-Output $_
@@ -50,7 +48,7 @@ catch {
 
 #Run the S1 installer
 try {
-    Start-Process -FilePath "C:\Software\SentinelAgent.exe" -ArgumentList "-t $env:SentinelOneSiteToken -q" -NoNewWindow
+    Start-Process -FilePath $exePath -ArgumentList "-t $env:SentinelOneSiteToken -q" -NoNewWindow
 }
 catch {
     Write-Output "S1 agent was not able to install successfully. Full error message:"
@@ -60,10 +58,10 @@ catch {
 
 #Clean up the S1 installer
 try {
-    Remove-Item -Path "C:\Software\SentinelAgent.exe"
+    Remove-Item -Path $exePath
 }
 catch {
-    Write-Output "Could not clean up installer. Please check C:\Software\SentinelAgent.exe and see if it was removed. Full error message:"
+    Write-Output "Could not clean up installer. Please check $exePath and see if it was removed. Full error message:"
     Write-Output $_
     exit 1
 }
