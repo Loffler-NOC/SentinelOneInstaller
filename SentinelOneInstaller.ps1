@@ -48,7 +48,7 @@ catch {
 
 #Run the S1 installer
 try {
-    Start-Process -FilePath $exePath -ArgumentList "-t $env:SentinelOneSiteToken -q" -NoNewWindow
+    Start-Process -FilePath $exePath -ArgumentList "-t $env:SentinelOneSiteToken -q" -NoNewWindow -Wait
 }
 catch {
     Write-Output "S1 agent was not able to install successfully. Full error message:"
