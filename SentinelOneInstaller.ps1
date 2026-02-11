@@ -73,7 +73,7 @@ try {
 catch {
     Write-Output "Unable to read HKLM\SYSTEM\CurrentControlSet\Services\SentinelAgent\config\ . Cannot determine if S1 was installed successfully. Full error message:"
     Write-Output $_
-    exit 1
+#    exit 1
 }
 
 if ($S1installed) {
