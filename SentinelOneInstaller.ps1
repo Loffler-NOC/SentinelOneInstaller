@@ -38,7 +38,7 @@ $exePath = ".\SentinelAgent.exe"
 
 #Download the S1 installer
 try {
-    Invoke-WebRequest -Uri $downloadURI -Outfile $exePath
+    Invoke-RestMethod -Uri $downloadURI -Outfile $exePath
     }
 catch {
     Write-Output "S1 was not able to be downloaded. Please check that the device is able to reach $downloadURI . Full error message:"
