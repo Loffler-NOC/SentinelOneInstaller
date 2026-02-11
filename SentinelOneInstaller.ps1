@@ -1,20 +1,20 @@
 #Check if S1 is already installed
-#try {
-#    $installed = Get-ItemProperty -LiteralPath "HKLM:\SYSTEM\CurrentControlSet\Services\SentinelAgent\config\"
-#}
-#catch {
-#    Write-Output "Unable to read HKLM\SYSTEM\CurrentControlSet\Services\SentinelAgent\config\ . Cannot determine if S1 is already installed. Full error message:"
-#    Write-Output $_
-#    exit 1
-#}
-#
-#if ($installed) {
-#    Write-Output "SentinelOne is already installed"
-#    exit 0
-#} 
-#else {
-#    Write-Host "SentinelOne is not installed, proceeding to next check"
-#}
+try {
+    $installed = Get-ItemProperty -LiteralPath "HKLM:\SYSTEM\CurrentControlSet\Services\SentinelAgent\config\"
+}
+catch {
+    Write-Output "Unable to read HKLM\SYSTEM\CurrentControlSet\Services\SentinelAgent\config\ . Cannot determine if S1 is already installed. Full error message:"
+    Write-Output $_
+    exit 1
+}
+
+if ($installed) {
+    Write-Output "SentinelOne is already installed"
+    exit 0
+} 
+else {
+    Write-Host "SentinelOne is not installed, proceeding to next check"
+}
 
 #Check that site token is filled out
 #S1SiteToken is the global and site variable for the SentinelOne site token.
@@ -67,21 +67,21 @@ catch {
 }
 
 #Check that S1 was installed
-#try {
-#    $S1installed = Get-ItemProperty -LiteralPath "HKLM:\SYSTEM\CurrentControlSet\Services\SentinelAgent\config\"
-#}
-#catch {
-#    Write-Output "Unable to read HKLM\SYSTEM\CurrentControlSet\Services\SentinelAgent\config\ . Cannot determine if S1 was installed successfully. Full error message:"
-#    Write-Output $_
-#    exit 1
-#}
-#
-#if ($S1installed) {
-#    Write-Output "SentinelOne is installed."
-#    Write-Output "NOTE: Endpoint restart is required for full SentinelOne visibility and control"
-#    exit 0
-#} 
-#else {
-#    Write-Host "SentinelOne attempted to install but failed. Please check the error log."
-#    exit 1
-#}
+try {
+    $S1installed = Get-ItemProperty -LiteralPath "HKLM:\SYSTEM\CurrentControlSet\Services\SentinelAgent\config\"
+}
+catch {
+    Write-Output "Unable to read HKLM\SYSTEM\CurrentControlSet\Services\SentinelAgent\config\ . Cannot determine if S1 was installed successfully. Full error message:"
+    Write-Output $_
+    exit 1
+}
+
+if ($S1installed) {
+    Write-Output "SentinelOne is installed."
+    Write-Output "NOTE: Endpoint restart is required for full SentinelOne visibility and control"
+    exit 0
+} 
+else {
+    Write-Host "SentinelOne attempted to install but failed. Please check the error log."
+    exit 1
+}
